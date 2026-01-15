@@ -215,29 +215,29 @@
 \resizebox{0.9\textwidth}{!}{
 \begin{tabular}{|p{4.5cm}|p{5cm}|p{5cm}|}
 \hline
-\textbf{System Type}
+\textbf{Literature / System}
 & \textbf{Key Advantage}
 & \textbf{Limitation} \\
 \hline
 
-Centralized Cloud (Google Drive, AWS)
+Centralized Cloud (Google Drive, AWS) \textbf{[System]}
 & High speed, easy user experience
 & Central point of failure, privacy risks, data ownership issues \\
 \hline
 
-IPFS Development
-& Content-addressed storage, high redundancy
-& Difficult to manage permissions and persistence without layers \\
+Decentralizing File Sharing (J. Anthal et al., 2023) \textbf{[Paper]}
+& Combines Blockchain security with IPFS storage for redundancy
+& High latency and lower throughput compared to centralized servers \\
 \hline
 
-Early Blockchain Storage
-& Immutable and secure
-& Prohibitively high gas costs for storing large data directly on-chain \\
+Secure Storage System (A. Kumar et al., 2023) \textbf{[Paper]}
+& Ensures data immutability and integrity using cryptographic hashing
+& Dependency on cryptocurrency (Gas fees) for write operations \\
 \hline
 
-Proposed System
-& Hybrid approach (IPFS for Data + Blockchain for Access)
-& Requires Web3 wallet (Metamask) interaction \\
+Enhanced IPFS Platform (S. Jadhav et al., 2024) \textbf{[Paper]}
+& User-centric access control with advanced encryption
+& Complex key management and user adoption barriers \\
 \hline
 
 \end{tabular}
@@ -262,15 +262,15 @@ Proposed System
 \end{frame}
 
 
-\begin{frame}{Proposed System}
+\begin{frame}{Proposed System - Overcoming Limitations}
 \justifying
-The proposed system is a {Decentralized Cloud Storage} platform that combines the efficiency of IPFS with the security of Ethereum.
+Our solution addresses the critical flaws of centralization by shifting control to the user and the blockchain.
 
 \begin{itemize}
-    \item {Off-chain storage} of large files on IPFS via Pinata to ensure efficiency and speed.
-    \item {On-chain storage} of file hashes (CIDs) to ensure immutability and proof of existence.
-    \item {Smart Contract functionality} to manage `allow` and `disallow` lists for secure file sharing.
-    \item {Metamask integration} for secure user authentication and transaction signing.
+    \item \textbf{Eliminating Single Points of Failure:} Unlike central servers, we use \textbf{IPFS} for distributed, redundant storage that resists downtime and censorship.
+    \item \textbf{Ensuring Data Ownership:} We replaced password-based logins with \textbf{Metamask}, granting users absolute ownership of their encryption keys and data.
+    \item \textbf{Guaranteeing Transparency:} Start Contracts replace opaque database logs, providing an immutable, publicly auditable record of who shared what with whom.
+    \item \textbf{Preventing Tampering:} Cryptographic hashing guarantees that any alteration to a file changes its ID, making undetectable data manipulation impossible.
 \end{itemize}
 \end{frame}
 \begin{frame}{Software \& Hardware Requirements}

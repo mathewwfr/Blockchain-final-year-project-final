@@ -1,4 +1,5 @@
 import Upload from "./artifacts/contracts/Upload.sol/Upload.json";
+import ContractAddressFile from "./contractAddress.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import FileUpload from "./components/FileUpload";
@@ -52,7 +53,7 @@ function App() {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setAccount(address);
-        let contractAddress = "0x1Eb835EB7BEEEE9E6bbFe08F16a2d2eF668204bd";
+        let contractAddress = ContractAddressFile.address;
 
         const contract = new ethers.Contract(
           contractAddress,

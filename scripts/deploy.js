@@ -1,4 +1,6 @@
 const hre = require("hardhat");
+const fs = require("fs");
+const path = require("path");
 
 async function main() {
   // Get a different account to deploy with to avoid the flagged address '0x5FbDB...'
@@ -12,7 +14,13 @@ async function main() {
 
   await upload.waitForDeployment();
 
-  console.log("Library deployed to:", upload.target);
+  const contractAddress = upload.target;
+  console.log("Library deployed to:", contractAddress);
+
+  // Save address to file
+  const addressFile = path.join(__dirname, "../client/src/contractAddress.json");
+  fs.writeFileSync(addressFile, JSON.stringify({ address: contractAddress }, null, 2));
+  console.log("Contract address saved to:", addressFile);
 }
 
 main().catch((error) => {

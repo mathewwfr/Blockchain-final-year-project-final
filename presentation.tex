@@ -1,0 +1,572 @@
+\documentclass[aspectratio=169]{beamer}
+
+% --------------------------------
+% THEME & GREY COLOR SETTINGS
+% --------------------------------
+\usetheme{Madrid}
+
+% --------------------------------
+% DARK NAVY BLUE COLORS
+% --------------------------------
+\definecolor{navyblue}{RGB}{15,32,64}   % Dark navy blue
+\definecolor{navyaccent}{RGB}{25,45,85} % Slightly lighter navy
+       % Accent blue
+
+% --------------------------------
+% DARK COLOR THEME
+% --------------------------------
+
+
+\setbeamercolor{structure}{fg=navyblue}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{frametitle}{fg=white,bg=navyblue}
+
+% Item bullets
+\setbeamercolor{item}{fg=navyblue}
+\setbeamercolor{subitem}{fg=navyblue}
+
+% --------------------------------
+% TITLE PAGE COLORS
+% --------------------------------
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{title page header}{bg=navyblue}
+\setbeamercolor{author}{fg=navyblue}
+\setbeamercolor{institute}{fg=navyblue}
+\setbeamercolor{date}{fg=navyblue}
+
+% footer
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[
+      wd=.33\paperwidth,
+      ht=3.5ex,
+      dp=1.5ex,
+      center
+    ]{author in head/foot}%
+      \color{white}\small [Your Name] \,|\, Roll No: [Your Roll No]
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[
+      wd=.34\paperwidth,
+      ht=3.5ex,
+      dp=1.5ex,
+      center
+    ]{title in head/foot}%
+      % \color{white}\small Decentralized Cloud Storage
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[
+      wd=.33\paperwidth,
+      ht=3.5ex,
+      dp=1.5ex,
+      right
+    ]{date in head/foot}%
+      \color{white}\small
+      \insertframenumber/\inserttotalframenumber \hspace*{1em}
+    \end{beamercolorbox}%
+  }%
+}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% --------------------------------
+% PACKAGES
+% --------------------------------
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+
+
+% --------------------------------
+% TITLE DETAILS
+% --------------------------------
+\title[Interim I]{Blockchain-Based Decentralized Cloud Storage}
+
+\author{%
+\centering
+{\large [Your Name]}\\
+{\normalsize Roll No: [Your Roll No]}\\
+{\normalsize Register Number: [Your Reg No]}
+}
+
+% \vspace{0.3cm}
+
+\institute{%
+\centering
+% \vspace{0.1cm}
+{\normalsize Guided by: [Guide Name]}\\
+{\normalsize [Department Name]}\\
+{\normalsize [College Name]}
+}
+
+\date{%
+\centering
+% {\normalsize Interim Evaluation – I}
+}
+
+
+% --------------------------------
+% DOCUMENT START
+% --------------------------------
+\begin{document}
+
+% --------------------------------
+% SLIDE 1 : TITLE
+% --------------------------------
+\begin{frame}
+\titlepage
+\end{frame}
+
+% --------------------------------
+% SLIDE 2 : CONTENTS
+% --------------------------------
+
+% \begin{frame}{Contents}
+% \tableofcontents ￼
+% \end{frame}
+
+
+% --------------------------------
+% SLIDE 3 : INTRODUCTION
+% --------------------------------
+\section{Introduction}
+\begin{frame}{Introduction}
+\justifying
+\begin{itemize}
+    \item Traditional centralized cloud storage systems (like Google Drive, Dropbox) rely on central servers, creating a single point of failure and privacy risks.
+    \item Decentralized Cloud Storage utilizes blockchain technology and IPFS (InterPlanetary File System) to secure files.
+    \item Files are uploaded to IPFS, ensuring redundancy and decentralization, while the content hash (CID) is stored on the Ethereum blockchain.
+    \item This system ensures data integrity, transparency, and gives users complete control over who accesses their files through smart contracts.
+    \item It eliminates reliance on third-party intermediaries for data storage and management.
+\end{itemize}
+\end{frame}
+
+% --------------------------------
+% SLIDE 4 : SCOPE
+% --------------------------------
+
+\section{Scope}
+\justifying
+\begin{frame}{Scope of the Project}
+
+\begin{itemize}
+    \item Builds a Decentralized Application (DApp) that interfaces with the Ethereum blockchain and IPFS.
+    \item Allows users to upload various file types (images, PDFs) which are stored on the Pinata IPFS network.
+    \item Implements smart contracts using Solidity to manage file hashes and access control lists.
+    \item Provides a secure sharing mechanism where users can grant or revoke access (`allow`/`disallow`) to specific wallet addresses.
+    \item Ensures data immutability and retrievability without reliance on a central authority.
+\end{itemize}
+
+\end{frame}
+
+
+
+% --------------------------------
+% SLIDE 5 : RELEVANCE
+% --------------------------------
+\section{Relevance}
+\begin{frame}{Relevance}
+\justifying
+\begin{itemize}
+    \item ADDRESSES the critical need for privacy and data sovereignty in the digital age.
+    \item PREVENTS unauthorized access and data mining by centralized corporations.
+    \item REDUCES downtime and data loss risks through the distributed nature of IPFS.
+    \item PROVIDES a transparent and tamper-proof record of file ownership and access via the Blockchain.
+    \item ELIMINATES intermediaries, potentially lowering storage costs and increasing security.
+\end{itemize}
+
+
+\end{frame}
+
+
+% --------------------------------
+% SLIDE 6 : OBJECTIVE
+% --------------------------------
+\section{Objective}
+\begin{frame}{Objectives}
+\justifying
+\begin{itemize}
+    \item {Develop a Decentralized Storage System:} Create a web interface connecting to Ethereum and IPFS for file management.
+    
+    \item {Ensure Data Integrity:} Use cryptographic hashing (IPFS CIDs) to verify that files have not been altered.
+    
+    \item {Implement Access Control:} deploy smart contracts to manage permissions, allowing users to share files securely.
+    
+    \item {User-Friendly Experience:} Abstract complex blockchain interactions behind a simple React-based UI.
+\end{itemize}
+\end{frame}
+
+
+% --------------------------------
+% SLIDE 7 : REQUIREMENT ANALYSIS
+% --------------------------------
+\section{Requirement Analysis}
+ \begin{frame}{Existing System (Literature Review)}
+
+\begin{center}
+\textit{Table 1: Comparison with Existing Systems}
+\vspace{0.2cm}
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.3}
+
+\resizebox{0.9\textwidth}{!}{
+\begin{tabular}{|p{4.5cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{System Type}
+& \textbf{Key Advantage}
+& \textbf{Limitation} \\
+\hline
+
+Centralized Cloud (Google Drive, AWS)
+& High speed, easy user experience
+& Central point of failure, privacy risks, data ownership issues \\
+\hline
+
+IPFS Development
+& Content-addressed storage, high redundancy
+& Difficult to manage permissions and persistence without layers \\
+\hline
+
+Early Blockchain Storage
+& Immutable and secure
+& Prohibitively high gas costs for storing large data directly on-chain \\
+\hline
+
+Proposed System
+& Hybrid approach (IPFS for Data + Blockchain for Access)
+& Requires Web3 wallet (Metamask) interaction \\
+\hline
+
+\end{tabular}
+}
+\end{center}
+
+\end{frame}
+
+\vspace{0.2cm}
+\centering
+
+% \begin{frame}{Proposed System}
+\begin{frame}{Gap Identified}
+
+\begin{itemize}
+    \item Centralized systems are vulnerable to {hacks and censorship}.
+    \item Storing files directly on blockchain is {too expensive and slow}.
+    \item Existing decentralized solutions often lack {granular access control} for sharing files with specific users.
+    \item Many DApps lack a {user-friendly interface} for non-technical users.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Proposed System}
+\justifying
+The proposed system is a {Decentralized Cloud Storage} platform that combines the efficiency of IPFS with the security of Ethereum.
+
+\begin{itemize}
+    \item {Off-chain storage} of large files on IPFS via Pinata to ensure efficiency and speed.
+    \item {On-chain storage} of file hashes (CIDs) to ensure immutability and proof of existence.
+    \item {Smart Contract functionality} to manage `allow` and `disallow` lists for secure file sharing.
+    \item {Metamask integration} for secure user authentication and transaction signing.
+\end{itemize}
+\end{frame}
+\begin{frame}{Software \& Hardware Requirements}
+\raggedright
+
+\textbf{Software:}
+\begin{itemize}
+    \item Frontend: React.js
+    \item Blockchain Environment: Hardhat
+    \item Smart Contract Language: Solidity
+    \item Storage: IPFS (Pinata)
+    \item Wallet: Metamask
+    \item IDE: VS Code
+\end{itemize}
+
+\textbf{Hardware:}
+\begin{itemize}
+    \item Processor: Intel i5 or above
+    \item RAM: 8 GB minimum
+    \item Storage: Minimum 20 GB
+    \item Internet Connection
+\end{itemize}
+
+\end{frame}
+
+
+% --------------------------------
+% SLIDE 8 : DEVELOPMENT METHODOLOGY
+% --------------------------------
+\section{Development Methodology}
+\begin{frame}{Development Methodology}
+\justifying
+The project follows the {Agile development methodology} for building the DApp.
+
+\vspace{0.2cm}
+
+\begin{itemize}
+    \item {Iterative Design:} Smart contracts were developed and tested on a local Hardhat network before UI integration.
+    \item {Component-Based UI:} React components (FileUpload, Display, Modal) developed independently.
+    \item {Continuous Testing:} Frequent testing of smart contract functions (add, allow, display) to ensure security.
+    \item {Integration:} Connecting the frontend to the blockchain using Ethers.js.
+\end{itemize}
+
+\end{frame}
+
+
+
+% --------------------------------
+% SLIDE 9 : DESIGN
+% --------------------------------
+\section{Design}
+
+\begin{frame}{Design}
+    \centering
+    % Placeholder for your architecture diagram
+    % \includegraphics[width=0.9\textwidth,height=0.75\textheight,keepaspectratio]{img8.png}
+    \Large [Insert Architecture Diagram Here]
+    \small \\
+    (User $\rightarrow$ React App $\rightarrow$ Pinata/IPFS $\rightarrow$ Hash $\rightarrow$ Ethereum Smart Contract)
+   
+    \vspace{0.2cm}
+    \textit{Figure 1: System Architecture}
+
+\end{frame}
+
+
+% --------------------------------
+% SLIDE 10 : IMPLEMENTATION
+% --------------------------------
+
+\section{Implementation Details}
+\begin{frame}{Implementation Details}
+\justifying
+\begin{itemize}
+    \item \textbf{Smart Contract (`Upload.sol`):}
+    \begin{itemize}
+        \item Developed in Solidity.
+        \item Stores a mapping of user addresses to file URLs (`mapping(address=>string[])`).
+        \item Manages access control via an `Access` struct and nested mappings.
+    \end{itemize}
+
+    \item \textbf{Frontend (React):}
+    \begin{itemize}
+        \item `FileUpload.js`: Handles file selection and uploading to Pinata via API.
+        \item `Display.js`: Fetches and renders the user's images/files.
+        \item `Modal.js`: Interface for sharing access with other users.
+    \end{itemize}
+
+    \item \textbf{IPFS Integration:}
+    \begin{itemize}
+        \item Uses Pinata API to pin files to IPFS and retrieve the unique CID.
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Implementation Details - Workflow}
+\justifying
+\begin{itemize}
+    \item \textbf{Workflow:}
+    
+    \vspace{0.2cm}
+   
+    \begin{enumerate}
+        \item \textbf{Login:} User connects Metamask wallet.
+        \item \textbf{Upload:} User selects a file, it is uploaded to IPFS.
+        \item \textbf{Transaction:} The IPFS hash is sent to the `add` function in the smart contract via `ethers.js`.
+        \item \textbf{Storage:} The contract stores the hash associated with the user's address.
+        \item \textbf{Sharing:} User calls `allow` function to grant access to another address.
+        \item \textbf{Retrieval:} `display` function checks permissions and returns the list of file hashes.
+    \end{enumerate}
+
+\end{itemize}
+
+\end{frame}
+
+
+
+% --------------------------------
+% SLIDE 11 : CURRENT STATUS
+% --------------------------------
+\section{Current Status}
+
+% -------- Slide 1: Work Completed --------
+\begin{frame}{Current Status of Work}
+
+\textbf{Work Completed}
+\begin{itemize}
+    \item Requirement analysis and technology stack selection (React, Hardhat, IPFS).
+    \item Development and deployment of `Upload.sol` smart contract on local Hardhat network.
+    \item Implementation of React frontend (`App.js`, `FileUpload.js`, `Display.js`).
+    \item Integration with Pinata for successful file uploading and hash generation.
+    \item Basic connection with Metamask wallet.
+\end{itemize}
+
+\end{frame}
+
+% -------- Slide 2: Work in Progress --------
+\begin{frame}{Current Status of Work}
+
+\textbf{Work in Progress}
+\begin{itemize}
+    \item Refining the User Interface (CSS) for a better user experience.
+    \item Implementing robust error handling for failed transactions or uploads.
+    \item Testing the "Share Access" functionality extensively between multiple accounts.
+\end{itemize}
+
+\end{frame}
+
+% -------- Slide 3: Pending Work --------
+\begin{frame}{Current Status of Work}
+\textbf{Pending work}
+\begin{itemize}
+    \item Deployment of the smart contract to a public testnet (e.g., Sepolia).
+    \item Finalizing the documentation and project report.
+    \item Performance optimization and testing with larger file sizes.
+\end{itemize}
+
+\end{frame}
+
+
+% --------------------------------
+% SLIDE 12 : RESULTS 
+% --------------------------------
+\section{Results}
+
+\begin{frame}{Results}
+
+\begin{columns}
+
+% ---------- Left Column ----------
+\column{0.48\textwidth}
+\centering
+% Replace with your actual screenshot
+% \includegraphics[width=\linewidth]{img1.png}
+\framebox{\begin{minipage}{5cm}\centering \vspace{2cm} [Screenshot: Dashboard] \vspace{2cm} \end{minipage}}
+\scriptsize Fig. 1: Dashboard & File Upload
+
+% ---------- Right Column ----------
+\column{0.48\textwidth}
+\centering
+% Replace with your actual screenshot
+% \includegraphics[width=\linewidth]{img2.png}
+\framebox{\begin{minipage}{5cm}\centering \vspace{2cm} [Screenshot: Share Modal] \vspace{2cm} \end{minipage}}
+\scriptsize Fig. 2: Sharing Access Modal
+
+\end{columns}
+
+\end{frame}
+
+
+% --------------------------------
+% SLIDE 13 : PROJECT PLAN
+% --------------------------------
+
+\begin{frame}{Project Plan}
+\section{Project plan}
+\small
+
+\vspace{0.4cm}
+
+\begin{table}[h]
+\centering
+\textit{Table 2: Project Plan}
+\vspace{0.2cm}
+
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|p{6cm}|p{4cm}|}
+\hline
+\textbf{Phase} & \textbf{Activities} & \textbf{Status} \\
+\hline
+Phase 1 & Literature Survey & Completed \\
+\hline
+Phase 2 & Smart Contract Design & Completed \\
+\hline
+Phase 3 & Frontend Implementation & Completed \\
+\hline
+Phase 4 & Blockchain Integration & Ongoing \\
+\hline
+Phase 5 & Testing & Ongoing \\
+\hline
+Phase 6 & Final Documentation & Not yet started\\
+\hline
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+
+
+% --------------------------------
+% SLIDE 14 : CONCLUSION
+% --------------------------------
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+\justifying
+\begin{itemize}
+    \item The system successfully demonstrates a working Decentralized Cloud Storage application.
+    \item By leveraging IPFS, we achieve efficient storage without central servers.
+    \item The Ethereum Smart Contract ensures secure and transparent access control.
+    \item Features like `allow` and `disallow` provide granular control over data sharing.
+    \item The React-based interface makes the decentralized technology accessible to users.
+\end{itemize}
+\end{frame}
+
+
+% --------------------------------
+% SLIDE 15 : GIT HISTORY
+% --------------------------------
+\section{Git History}
+\begin{frame}{Git History}
+
+\begin{columns}
+    \column{0.80\textwidth}
+    \centering
+    % \includegraphics[width=\linewidth]{img6.png}
+    \large [Insert Git Log Screenshot Here]
+    \vspace{0.3cm}
+
+\end{columns}
+
+\end{frame}
+
+
+% --------------------------------
+% SLIDE 16 : BIBLIOGRAPHY
+% --------------------------------
+\section{Bibliography}
+\begin{frame}{Bibliography}
+
+\begin{itemize}
+    \item[1] J. Benet, 
+    \textit{IPFS - Content Addressed, Versioned, P2P File System}, 
+    arXiv:1407.3561, 2014.
+
+    \item[2] S. Nakamoto, 
+    “Bitcoin: A Peer-to-Peer Electronic Cash System,” 
+    2008.
+
+    \item[3] G. Wood, 
+    “Ethereum: A Secure Decentralised Generalised Transaction Ledger,” 
+    Ethereum Project Yellow Paper, 2014.
+
+    \item[4] Pinata Documentation, 
+    “Pinata IPFS API,” 
+    \url{https://docs.pinata.cloud/}.
+
+    \item[5] Hardhat Documentation, 
+    “Ethereum Development Environment,” 
+    \url{https://hardhat.org/}.
+
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}

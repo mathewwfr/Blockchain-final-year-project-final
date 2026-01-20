@@ -1,0 +1,162 @@
+\documentclass[12pt,a4paper]{report}
+
+% ------------------ PACKAGES ------------------
+\usepackage{times}              % Times New Roman
+\usepackage{setspace}           % Double spacing
+\usepackage{geometry}           % Page margins
+\usepackage{ragged2e}           % Justified text
+\usepackage{titlesec}           % Title formatting
+\usepackage{graphicx}           % Images
+\usepackage{hyperref}           % Links
+\usepackage{caption}            % Caption formatting
+
+% ------------------ PAGE SETUP ------------------
+\geometry{
+    left=3cm,
+    right=2.5cm,
+    top=2cm,
+    bottom=2.5cm
+}
+
+\doublespacing
+\justifying
+
+% ------------------ CHAPTER FORMAT ------------------
+\titleformat{\chapter}
+{\normalfont\bfseries\centering}
+{\thechapter}
+{1em}
+{\MakeUppercase}
+
+% Reduce extra space before chapter title
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+
+% ------------------ SECTION FORMAT ------------------
+\titleformat{\section}
+{\normalfont\bfseries}
+{\thesection}
+{1em}
+{\MakeUppercase}
+
+% ------------------ DOCUMENT ------------------
+\begin{document}
+
+% ================== CHAPTER 1 ==================
+\chapter{INTRODUCTION}
+
+\section{INTRODUCTION}
+
+In the digital era, data storage is a fundamental requirement for individuals and organizations. Traditional cloud storage systems, provided by tech giants like Google Drive, Dropbox, and Amazon Web Services (AWS), rely on centralized servers. While efficient, these systems introduce significant risks, including single points of failure, data breaches, privacy violations, and unauthorized data mining. Users effectively lose control over their data once it is uploaded to these third-party servers.
+
+The Blockchain-Based Decentralized Cloud Storage System addresses these challenges by leveraging the power of Web3 technologies. By combining the InterPlanetary File System (IPFS) for decentralized file storage with the Ethereum blockchain for secure access control, this system ensures that data remains immutable, distributed, and under the user's control. Files are not stored on a central server but are distributed across a peer-to-peer network, while the "keys" (cryptographic hashes) to access them are managed via smart contracts. This project demonstrates a practical application of decentralized technology to enhance data sovereignty and security.
+
+\section{NEED FOR PROJECT}
+
+The reliance on centralized cloud storage providers has exposed users to numerous vulnerabilities. High-profile data leaks, server outages, and the monetization of user data without consent highlight the limitations of the current Web2 storage model. Furthermore, centralized authorities have the power to censor or delete data without user approval.
+
+There is a critical need for a storage solution that guarantees privacy, security, and data ownership. This project fulfills this need by eliminating intermediaries. Using IPFS ensures that files are stored redundantly across the network, preventing data loss. Using the Blockchain creates a tamper-proof ledger of file ownership and access permissions. The proposed system empowers users to securely upload, store, and share their files without trusting a third-party service provider, addressing the growing demand for decentralized internet utilities.
+
+\section{OBJECTIVE}
+
+The main objectives of the Blockchain-Based Decentralized Cloud Storage System are:
+\begin{itemize}
+    \item To develop a decentralized application (DApp) that provides secure cloud storage facilities.
+    \item To utilize IPFS (InterPlanetary File System) for efficient, distributed storage of large files (images, documents).
+    \item To implement Ethereum Smart Contracts (Solidity) to manage file ownership and access control lists (`allow`/`disallow`).
+    \item To ensure data immutability by storing cryptographic hashes (CIDs) on the blockchain rather than the files themselves.
+    \item To provide a user-friendly interface using React.js that abstracts the complexities of blockchain interactions.
+    \item To enable secure file sharing between specific users without relying on a central authority.
+\end{itemize}
+
+\section{SCOPE OF THE PROJECT}
+
+The project focuses on building a functional DApp for decentralized file management.
+
+\begin{itemize}
+    \item \textbf{Decentralized File Storage:}  
+    Integration with IPFS (via Pinata) to allow users to upload files and receive a unique Content Identifier (CID).
+
+    \item \textbf{Smart Contract Management:}  
+    Deployment of Solidity contracts to store CIDs mapped to user addresses and handle permission logic.
+
+    \item \textbf{Access Control Mechanism:}  
+    A secure sharing feature allowing users to grant access to their files to specific wallet addresses and revoke it when needed.
+
+    \item \textbf{Web3 Integration:}  
+    Seamless connection with browser-based wallets like Metamask for authentication and transaction signing.
+
+    \item \textbf{Scalability:}  
+    The architecture is designed to be extensible, potentially supporting encryption before upload or integration with other blockchain networks in the future.
+\end{itemize}
+
+
+\section{ORGANIZATION OF THESIS}
+
+The organization of this thesis is as follows:
+\begin{itemize}
+    \item \textbf{Chapter 1: Introduction}  
+    This chapter introduces the concept of decentralized storage, the limitations of centralized systems, the motivation for the project, and its core objectives.
+
+    \item \textbf{Chapter 2: Literature Survey}  
+    This chapter reviews existing storage solutions, including traditional cloud providers and early decentralized attempts, highlighting the research gap that this project addresses.
+\end{itemize}
+
+
+% ================== CHAPTER 2 ==================
+\chapter{LITERATURE REVIEW}
+
+\section{EXISTING SYSTEM}
+
+Currently, the cloud storage market is dominated by centralized service providers such as Google Drive, Microsoft OneDrive, and Dropbox. These systems store user data in massive data centers owned and controlled by the service provider. While they offer high retrieval speeds and ease of use, they suffer from inherent architectural flaws. Security relies entirely on the provider's defenses; if a central server is hacked, millions of user records are compromised. Additionally, these providers retain the legal right to access, scan, and in some cases, modify user data.
+
+Privacy-focused alternatives often rely on client-side encryption but still utilize centralized servers for storage, leaving them vulnerable to denial-of-service attacks or physical server damage. There is a lack of transparency regarding who accesses the data and how it is managed. This centralized control contradicts the principles of data sovereignty and privacy required in the modern digital landscape.
+
+\section{STUDY ON EXISTING SYSTEM}
+
+The evolution of storage systems has moved from local physical storage to centralized cloud servers, and now towards decentralized networks. Early research into peer-to-peer (P2P) file systems like BitTorrent demonstrated the efficiency of distributed data transfer. Building on this, IPFS (InterPlanetary File System) introduced a content-addressed storage model, where files are retrieved based on *what* they are, not *where* they are located.
+
+Blockchain technology provided the missing piece: a trustless layer for identity and access management. Early attempts to store data directly on blockchains (like Bitcoin) proved prohibitively expensive due to block size limits. Current state-of-the-art solutions propose a hybrid model: storing the heavy data off-chain (IPFS) and the lightweight metadata (hashes/permissions) on-chain. This project builds upon these concepts to create a user-friendly application.
+
+\begin{table}[h]
+\centering
+\caption{Comparison of Storage Systems}
+\label{tab:literature}
+\begin{tabular}{|p{3cm}|p{6cm}|p{4cm}|}
+\hline
+\textbf{System Type} & \textbf{Key Characteristics} & \textbf{Limitations} \\
+\hline
+Centralized Cloud (Google Drive, AWS) &
+Data stored on central servers. High speed and usability. &
+Single point of failure, privacy risks, potential for censorship. \\
+\hline
+Peer-to-Peer Networks (BitTorrent) &
+Distributed file sharing. High redundancy. &
+Lack of persistence (files disappear if no seeds), no access control. \\
+\hline
+On-Chain Storage &
+Storing data directly on the blockchain ledger. &
+Extremely high gas costs; unfeasible for large files. \\
+\hline
+IPFS (Raw) &
+Content-addressed decentralized storage. &
+Complex for average users; files can be garbage collected if not pinned. \\
+\hline
+Proposed Hybrid System &
+IPFS for storage + Blockchain for Access Control. &
+Requires Web3 wallet familiarity; transaction fees (gas) for updates. \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{GAP IDENTIFICATION}
+
+Based on the analysis of existing systems, the following gaps are identified:
+\begin{itemize}
+    \item Centralized systems sacrifice privacy and ownership for convenience.
+    \item Purely blockchain-based storage is not cost-effective for general file storage.
+    \item Raw decentralized protocols (like IPFS) lack built-in, user-friendly access control mechanisms (anyone with the hash can view the file).
+    \item There is a lack of simple, integrated interfaces that allow non-technical users to leverage decentralized storage with granular sharing permissions.
+    \item Most existing DApps do not effectively bridge the gap between secure storage and easy file sharing management.
+\end{itemize}
+
+\end{document}

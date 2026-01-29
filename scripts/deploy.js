@@ -3,9 +3,8 @@ const fs = require("fs");
 const path = require("path");
 
 async function main() {
-  // Get a different account to deploy with to avoid the flagged address '0x5FbDB...'
-  const signers = await hre.ethers.getSigners();
-  const deployer = signers[5]; // Use the 6th account
+  // Deploy to hardhat network instead
+  const [deployer] = await hre.ethers.getSigners();
 
   console.log("Deploying contracts with the account:", deployer.address);
 

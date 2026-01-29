@@ -14,11 +14,18 @@
   animation: fadeIn 0.3s ease;
 }
 
-/*hi hello*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 
 .modalContainer {
   width: 500px;
-  /* Kept original width but can be responsive */
   max-width: 90%;
   background: #1a1a1e;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -55,36 +62,134 @@
   width: 100%;
   margin: 10px 0;
   box-sizing: border-box;
-  /* Fix for padding increasing width */
+  font-size: 1rem;
 }
 
-/* Select Box Styling */
-#selectNumber {
+.modalContainer .address:focus {
+  outline: none;
+  border-color: #00b8e6;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Access List Styles */
+.access-list {
+  margin-top: 10px;
   width: 100%;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
   color: white;
-  margin-bottom: 20px;
-  cursor: pointer;
 }
 
-#selectNumber option {
-  background: #1a1a1e;
-  color: white;
+.access-list h3 {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.list-container {
+  max-height: 200px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Scrollbar for list */
+.list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.list-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.access-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.2s;
+}
+
+.access-item:last-child {
+  border-bottom: none;
+}
+
+.access-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.user-address {
+  font-family: 'Roboto Mono', monospace;
+  color: #eee;
+  font-size: 0.85rem;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.approved {
+  background-color: rgba(0, 255, 128, 0.15);
+  color: #00ff80;
+  border: 1px solid rgba(0, 255, 128, 0.3);
+}
+
+.status.rejected {
+  background-color: rgba(255, 80, 80, 0.15);
+  color: #ff5050;
+  border: 1px solid rgba(255, 80, 80, 0.3);
+}
+
+.revoke-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-left: 10px;
+}
+
+.revoke-btn:hover {
+  background: rgba(255, 80, 80, 0.1);
+  transform: scale(1.1);
+}
+
+.no-access {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 20px;
+  font-size: 0.9rem;
 }
 
 .footer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 15px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .footer button {
-  width: 120px;
-  padding: 10px;
+  padding: 10px 20px;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
@@ -95,12 +200,15 @@
 
 .footer button:nth-child(2) {
   /* Share button */
-  background: var(--primary-color);
+  background: var(--primary-color, #00b8e6);
+  /* Fallback */
   color: #000;
 }
 
 .footer button:nth-child(2):hover {
-  background: #00b8e6;
+  background: #00d1ff;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(0, 184, 230, 0.3);
 }
 
 #cancelBtn {
